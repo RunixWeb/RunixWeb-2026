@@ -8,26 +8,48 @@ const sections = document.querySelectorAll('.section');
 const filterButtons = document.querySelectorAll('.filter-btn');
 const wallpapersGrid = document.getElementById('wallpapersGrid');
 const modal = document.getElementById('wallpaperModal');
-const closeBtn = document.querySelector('.close');
+const modalClose = document.getElementById('modalClose');
 const downloadBtn = document.getElementById('downloadBtn');
+const themeToggle = document.getElementById('themeToggle');
 
 let allWallpapers = [];
 let currentFilter = 'all';
+let isDarkMode = true;
 
 // ==================== NAVEGACIÓN ====================
 navButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const sectionId = btn.getAttribute('data-section');
         
-        // Actualizar botones activos
         navButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         
-        // Mostrar sección
         sections.forEach(s => s.classList.remove('active'));
         document.getElementById(sectionId).classList.add('active');
     });
 });
+
+// ==================== TEMA CLARO/OSCURO ====================
+themeToggle.addEventListener('click', () => {
+    isDarkMode = !isDarkMode;
+    document.body.classList.toggle('light-mode');
+    themeToggle.textContent = isDarkMode ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+});
+
+// Cargar tema guardado
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        isDarkMode = false;
+        document.body.classList.add('light-mode');
+        themeToggle.textContent = '☀️';
+    } else {
+        isDarkMode = true;
+        document.body.classList.remove('light-mode');
+        themeToggle.textContent = '🌙';
+    }
+}
 
 // ==================== CARGA DE WALLPAPERS ====================
 async function loadWallpapers() {
@@ -35,7 +57,6 @@ async function loadWallpapers() {
     
     for (const category of WALLPAPER_CATEGORIES) {
         try {
-            // Intenta cargar el directorio
             const response = await fetch(`${WALLPAPERS_DIR}${category}/`);
             
             if (!response.ok) continue;
@@ -44,7 +65,6 @@ async function loadWallpapers() {
             const parser = new DOMParser();
             const doc = parser.parseFromString(text, 'text/html');
             
-            // Busca archivos .webp en la respuesta
             const links = Array.from(doc.querySelectorAll('a'));
             
             links.forEach(link => {
@@ -54,12 +74,12 @@ async function loadWallpapers() {
                         category: category,
                         filename: href,
                         path: `${WALLPAPERS_DIR}${category}/${href}`,
-                        title: href.replace('.webp', '').toUpperCase()
+                        title: href.replace('.webp', '').replace(/[-_]/g, ' ').toUpperCase()
                     });
                 }
             });
         } catch (error) {
-            console.log(`Directorio ${category} no encontrado o vacío`);
+            console.log(`Directorio ${category} no encontrado`);
         }
     }
     
@@ -74,6 +94,11 @@ function renderWallpapers(filter) {
     const filtered = filter === 'all' 
         ? allWallpapers 
         : allWallpapers.filter(w => w.category === filter);
+    
+    if (filtered.length === 0) {
+        wallpapersGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">No hay wallpapers en esta categoría</p>';
+        return;
+    }
     
     filtered.forEach(wallpaper => {
         const card = document.createElement('div');
@@ -105,21 +130,17 @@ filterButtons.forEach(btn => {
 
 // ==================== MODAL ====================
 function openModal(wallpaper) {
-    const modal = document.getElementById('wallpaperModal');
     const modalImage = document.getElementById('modalImage');
     const modalTitle = document.getElementById('modalTitle');
     const modalDetails = document.getElementById('modalDetails');
-    const downloadBtn = document.getElementById('downloadBtn');
     
     modalImage.src = wallpaper.path;
     modalTitle.textContent = wallpaper.title;
     
-    const fileSize = 'Tamaño: ~2-3 MB'; // Ajusta según tus archivos
     modalDetails.innerHTML = `
         <strong>Archivo:</strong> ${wallpaper.filename}<br>
-        <strong>Categoría:</strong> ${wallpaper.category.toUpperCase()}<br>
-        <strong>Resolución:</strong> Recomendado 1080p+<br>
-        ${fileSize}
+        <strong>Categoría:</strong> ${wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1)}<br>
+        <strong>Formato:</strong> WebP
     `;
     
     downloadBtn.href = wallpaper.path;
@@ -128,7 +149,7 @@ function openModal(wallpaper) {
     modal.classList.add('active');
 }
 
-closeBtn.addEventListener('click', () => {
+modalClose.addEventListener('click', () => {
     modal.classList.remove('active');
 });
 
@@ -140,5 +161,6 @@ window.addEventListener('click', (e) => {
 
 // ==================== INICIALIZAR ====================
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
     loadWallpapers();
 });
