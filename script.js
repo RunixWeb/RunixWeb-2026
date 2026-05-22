@@ -4,7 +4,7 @@
 // 'carpeta' es el nombre de tu subcarpeta.
 // 'archivo' es el nombre de la imagen con su extensión.
 const miGaleria = [
-    { carpeta: "otros", archivo: "wallp002.png" },
+    { carpeta: "todos", archivo: "wallp002.png" },
     { carpeta: "juegos", archivo: "zelda.png" },
     { carpeta: "arte", archivo: "dibujo.jpg" },
     { carpeta: "espacio", archivo: "planeta.png" }
