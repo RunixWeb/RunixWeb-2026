@@ -7,34 +7,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- HEADER CON BOTONES -->
-    <header class="header">
-        <div class="header-left">
-            <div class="logo">RW</div>
-        </div>
-        
-        <nav class="nav">
-            <button class="nav-btn active" data-section="home">Home</button>
-            <button class="nav-btn" data-section="wallpapers">Wallpapers</button>
-            <button class="nav-btn" data-section="support">Help us</button>
+    <!-- PANEL LATERAL DELGADO -->
+    <aside class="sidebar">
+        <div class="logo">RW</div>
+        <nav class="vertical-nav">
+            <button class="nav-btn active" data-section="home" title="Inicio">⌂</button>
+            <button class="nav-btn" data-section="wallpapers" title="Wallpapers">🖼</button>
+            <button class="nav-btn" data-section="support" title="Apoyo">❤</button>
         </nav>
-
-        <div class="header-right">
-            <button id="themeToggle" class="theme-toggle">Theme</button>
-        </div>
-    </header>
+    </aside>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main class="container">
+    <main class="main-content">
         
         <!-- SECCIÓN: INICIO -->
         <section id="home" class="section active">
             <h1>Runix</h1>
-            <p>Una web creada por el creador de contenido Runix</p>
+            <p>Web creada para la comunidad</p>
             
             <div class="content-box">
-                <p>Bienvenid@s a tod@s, este sitio web se ha creado con el propósito de que me conozcan un poco y que tengan algo hecho por mi para la comunidad.</p>
-                <p>Todo ha sido realizado por mi, salvo el sitio web, para ser honesto, aunque, eso puede no ser cierto.</p>
+                <p>Bienvenid@s a tod@s, soy Runix, creador de contenido, artista, desarrollador de videojuegos, animador, youtuber y más.</p>
+                <p>Este sitio ha sido realizado para que me conozcan y tengan algo hecho para la comunidad.</p>
             </div>
 
             <div class="links-section">
@@ -53,17 +46,12 @@
         <section id="wallpapers" class="section">
             <h1>Wallpapers</h1>
             
-            <!-- FILTRO POR CATEGORÍA -->
-            <div class="filter-buttons">
+            <div class="filter-buttons" id="filterContainer">
                 <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="godot">Godot</button>
-                <button class="filter-btn" data-filter="linux">Linux</button>
-                <button class="filter-btn" data-filter="minimal">Minimalista</button>
             </div>
 
-            <!-- GALERÍA DE WALLPAPERS -->
             <div class="wallpapers-grid" id="wallpapersGrid">
-                <!-- Se llenarán automáticamente -->
+                <p style="grid-column: 1/-1; text-align: center;">Cargando...</p>
             </div>
 
             <!-- MODAL PARA VER DETALLES -->
@@ -82,29 +70,29 @@
 
         <!-- SECCIÓN: APOYO -->
         <section id="support" class="section">
-            <h1>Apoyar mi trabajo</h1>
+            <h1>Apoyo</h1>
             
             <div class="support-text">
-                <p>Si disfrutas mis creaciones y quieres apoyar, aquí tienes opciones:</p>
+                <p>Si disfrutas mi trabajo y quieres apoyar, aquí hay opciones:</p>
             </div>
 
             <div class="support-grid">
                 <div class="support-card">
                     <h2>Patreon</h2>
-                    <p>Acceso exclusivo a contenido antes de publicar</p>
-                    <a href="#" target="_blank" class="btn-support">Ir a Patreon</a>
+                    <p>Acceso exclusivo a contenido</p>
+                    <a href="#" target="_blank" class="btn-support">Ir</a>
                 </div>
 
                 <div class="support-card">
                     <h2>Ko-fi</h2>
-                    <p>Dona lo que quieras, cuando quieras</p>
-                    <a href="#" target="_blank" class="btn-support">Ir a Ko-fi</a>
+                    <p>Dona lo que quieras</p>
+                    <a href="#" target="_blank" class="btn-support">Ir</a>
                 </div>
 
                 <div class="support-card">
                     <h2>GitHub</h2>
-                    <p>Apoya dándole star a mis proyectos</p>
-                    <a href="#" target="_blank" class="btn-support">Ir a GitHub</a>
+                    <p>Apoya mis proyectos</p>
+                    <a href="#" target="_blank" class="btn-support">Ir</a>
                 </div>
             </div>
 
