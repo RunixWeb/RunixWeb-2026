@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RunixWeb - Creador de Contenido</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- SIDEBAR CON BOTONES -->
+    <nav class="sidebar">
+        <div class="logo">RW</div>
+        <button class="nav-btn active" data-section="home">
+            <span>Inicio</span>
+        </button>
+        <button class="nav-btn" data-section="wallpapers">
+            <span>Wallpapers</span>
+        </button>
+        <button class="nav-btn" data-section="support">
+            <span>Apoyar</span>
+        </button>
+    </nav>
 
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container">
+        
+        <!-- SECCIÓN: INICIO -->
+        <section id="home" class="section active">
+            <h1>Hola, soy RunixWeb</h1>
+            <p>Creador de contenido • Desarrollador Indie • Artista</p>
+            
+            <div class="content-text">
+                <p>Aquí encontrarás mis wallpapers originales, proyectos y formas de apoyar mi trabajo.</p>
+                <p>Todo lo que hago es desde <strong>Arch Linux + Hyprland</strong> en una <strong>HP Celeron N4020</strong>.</p>
+                <p>Si te gustan mis creaciones, ¡no dudes en explorar y descargar!</p>
+            </div>
+
+            <div class="quick-links">
+                <h3>Mis redes</h3>
+                <div class="links-grid">
+                    <a href="https://twitch.tv/runixweb" target="_blank">Kick</a>
+                    <a href="https://youtube.com/@runixweb" target="_blank">YouTube</a>
+                    <a href="https://github.com/runixweb" target="_blank">GitHub</a>
+                    <a href="https://itch.io/profile/runixweb" target="_blank">itch.io</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: WALLPAPERS -->
+        <section id="wallpapers" class="section">
+            <h1>Wallpapers</h1>
+            
+            <!-- FILTRO POR CATEGORÍA -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="godot">Godot</button>
+                <button class="filter-btn" data-filter="linux">Linux</button>
+                <button class="filter-btn" data-filter="minimal">Minimalista</button>
+            </div>
+
+            <!-- GALERÍA DE WALLPAPERS -->
+            <div class="wallpapers-grid" id="wallpapersGrid">
+                <!-- Se llenarán automáticamente con JavaScript -->
+            </div>
+
+            <!-- MODAL PARA VER DETALLES -->
+            <div id="wallpaperModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <img id="modalImage" src="" alt="">
+                    <div class="modal-info">
+                        <h3 id="modalTitle"></h3>
+                        <p id="modalDetails"></p>
+                        <a id="downloadBtn" href="" download class="btn-download">Descargar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: APOYAR -->
+        <section id="support" class="section">
+            <h1>Apoyar mi trabajo</h1>
+            
+            <div class="support-text">
+                <p>Si disfrutas mis creaciones y quieres apoyar mi trabajo, aquí tienes opciones:</p>
+            </div>
+
+            <div class="support-options">
+                <div class="support-card">
+                    <img src="assets/icons/patreon.jpg" alt="Patreon" class="support-icon">
+                    <h3>Patreon</h3>
+                    <p>Acceso exclusivo a contenido y wallpapers antes de publicar</p>
+                    <a href="https://patreon.com/runixweb" target="_blank" class="btn-support">Ir a Patreon</a>
+                </div>
+
+                <div class="support-card">
+                    <img src="assets/icons/kofi.jpg" alt="Ko-fi" class="support-icon">
+                    <h3>Ko-fi</h3>
+                    <p>Dona lo que quieras, cuando quieras</p>
+                    <a href="https://ko-fi.com/runixweb" target="_blank" class="btn-support">Ir a Ko-fi</a>
+                </div>
+
+                <div class="support-card">
+                    <img src="assets/icons/github.jpg" alt="GitHub" class="support-icon">
+                    <h3>GitHub</h3>
+                    <p>Apoya dándole star a mis proyectos</p>
+                    <a href="https://github.com/runixweb" target="_blank" class="btn-support">Ir a GitHub</a>
+                </div>
+            </div>
+
+            <div class="support-footer">
+                <p>¡Gracias por tu apoyo! 💙</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
