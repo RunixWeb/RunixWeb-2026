@@ -1,20 +1,15 @@
-// ==================== CONFIGURACIÓN ====================
-const WALLPAPERS_DIR = 'wallpapers/';
-const WALLPAPER_CATEGORIES = ['godot', 'linux', 'minimal'];
-
 // ==================== ELEMENTOS DEL DOM ====================
 const navButtons = document.querySelectorAll('.nav-btn');
 const sections = document.querySelectorAll('.section');
-const filterButtons = document.querySelectorAll('.filter-btn');
+const filterContainer = document.getElementById('filterContainer');
 const wallpapersGrid = document.getElementById('wallpapersGrid');
 const modal = document.getElementById('wallpaperModal');
 const modalClose = document.getElementById('modalClose');
 const downloadBtn = document.getElementById('downloadBtn');
-const themeToggle = document.getElementById('themeToggle');
 
 let allWallpapers = [];
 let currentFilter = 'all';
-let isDarkMode = true;
+let categories = new Set();
 
 // ==================== NAVEGACIÓN ====================
 navButtons.forEach(btn => {
@@ -29,61 +24,104 @@ navButtons.forEach(btn => {
     });
 });
 
-// ==================== TEMA CLARO/OSCURO ====================
-themeToggle.addEventListener('click', () => {
-    isDarkMode = !isDarkMode;
-    document.body.classList.toggle('light-mode');
-    themeToggle.textContent = isDarkMode ? '🌙' : '☀️';
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-});
+// ==================== CARGA AUTOMÁTICA DE WALLPAPERS ====================
+async function loadWallpapers() {
+    allWallpapers = [];
+    categories.clear();
+    
+    try {
+        // Buscar la carpeta wallpapers
+        const response = await fetch('wallpapers/');
+        
+        if (!response.ok) {
+            wallpapersGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Carpeta wallpapers no encontrada</p>';
+            return;
+        }
 
-// Cargar tema guardado
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        isDarkMode = false;
-        document.body.classList.add('light-mode');
-        themeToggle.textContent = '☀️';
-    } else {
-        isDarkMode = true;
-        document.body.classList.remove('light-mode');
-        themeToggle.textContent = '🌙';
+        const text = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        
+        // Obtener todas las subcarpetas
+        const links = Array.from(doc.querySelectorAll('a'));
+        const folders = links
+            .map(link => link.getAttribute('href'))
+            .filter(href => href && href !== '../' && href.endsWith('/'))
+            .map(href => href.slice(0, -1));
+
+        // Cargar imágenes de cada subcarpeta
+        for (const folder of folders) {
+            await loadWallpapersFromFolder(folder);
+        }
+
+        // Crear botones de filtro dinámicos
+        createFilterButtons();
+        renderWallpapers('all');
+
+    } catch (error) {
+        console.error('Error cargando wallpapers:', error);
+        wallpapersGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Error cargando wallpapers</p>';
     }
 }
 
-// ==================== CARGA DE WALLPAPERS ====================
-async function loadWallpapers() {
-    allWallpapers = [];
-    
-    for (const category of WALLPAPER_CATEGORIES) {
-        try {
-            const response = await fetch(`${WALLPAPERS_DIR}${category}/`);
-            
-            if (!response.ok) continue;
-            
-            const text = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-            
-            const links = Array.from(doc.querySelectorAll('a'));
-            
-            links.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href && href.endsWith('.webp')) {
+// ==================== CARGAR WALLPAPERS DE CARPETA ====================
+async function loadWallpapersFromFolder(folder) {
+    try {
+        const response = await fetch(`wallpapers/${folder}/`);
+        
+        if (!response.ok) return;
+
+        const text = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        
+        const links = Array.from(doc.querySelectorAll('a'));
+        const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
+
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href !== '../') {
+                const isImage = imageExtensions.some(ext => href.toLowerCase().endsWith(ext));
+                
+                if (isImage) {
+                    categories.add(folder);
                     allWallpapers.push({
-                        category: category,
+                        category: folder,
                         filename: href,
-                        path: `${WALLPAPERS_DIR}${category}/${href}`,
-                        title: href.replace('.webp', '').replace(/[-_]/g, ' ').toUpperCase()
+                        path: `wallpapers/${folder}/${href}`,
+                        title: href.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ').toUpperCase()
                     });
                 }
-            });
-        } catch (error) {
-            console.log(`Directorio ${category} no encontrado`);
-        }
+            }
+        });
+    } catch (error) {
+        console.log(`Carpeta ${folder} no encontrada`);
     }
+}
+
+// ==================== CREAR FILTROS DINÁMICOS ====================
+function createFilterButtons() {
+    filterContainer.innerHTML = '<button class="filter-btn active" data-filter="all">Todos</button>';
     
-    renderWallpapers('all');
+    const sortedCategories = Array.from(categories).sort();
+    sortedCategories.forEach(category => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.setAttribute('data-filter', category);
+        btn.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+        filterContainer.appendChild(btn);
+    });
+
+    // Agregar listeners a nuevos botones
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const filter = btn.getAttribute('data-filter');
+            renderWallpapers(filter);
+        });
+    });
 }
 
 // ==================== RENDERIZAR WALLPAPERS ====================
@@ -96,37 +134,20 @@ function renderWallpapers(filter) {
         : allWallpapers.filter(w => w.category === filter);
     
     if (filtered.length === 0) {
-        wallpapersGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">No hay wallpapers en esta categoría</p>';
+        wallpapersGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No hay wallpapers</p>';
         return;
     }
     
     filtered.forEach(wallpaper => {
         const card = document.createElement('div');
         card.className = 'wallpaper-card';
-        card.setAttribute('data-filter', wallpaper.category);
         
-        card.innerHTML = `
-            <img src="${wallpaper.path}" alt="${wallpaper.title}" loading="lazy">
-            <div class="wallpaper-overlay">
-                <div class="wallpaper-name">${wallpaper.title}</div>
-            </div>
-        `;
+        card.innerHTML = `<img src="${wallpaper.path}" alt="${wallpaper.title}" loading="lazy">`;
         
         card.addEventListener('click', () => openModal(wallpaper));
         wallpapersGrid.appendChild(card);
     });
 }
-
-// ==================== FILTROS ====================
-filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const filter = btn.getAttribute('data-filter');
-        renderWallpapers(filter);
-    });
-});
 
 // ==================== MODAL ====================
 function openModal(wallpaper) {
@@ -137,11 +158,7 @@ function openModal(wallpaper) {
     modalImage.src = wallpaper.path;
     modalTitle.textContent = wallpaper.title;
     
-    modalDetails.innerHTML = `
-        <strong>Archivo:</strong> ${wallpaper.filename}<br>
-        <strong>Categoría:</strong> ${wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1)}<br>
-        <strong>Formato:</strong> WebP
-    `;
+    modalDetails.innerHTML = `<strong>Archivo:</strong> ${wallpaper.filename}<br><strong>Categoría:</strong> ${wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1)}`;
     
     downloadBtn.href = wallpaper.path;
     downloadBtn.download = wallpaper.filename;
@@ -161,6 +178,5 @@ window.addEventListener('click', (e) => {
 
 // ==================== INICIALIZAR ====================
 document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
     loadWallpapers();
 });
