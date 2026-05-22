@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- PANEL LATERAL DELGADO -->
     <aside class="sidebar">
         <div class="logo">RW</div>
         <nav class="vertical-nav">
@@ -15,12 +14,11 @@
             <button class="nav-btn" data-section="wallpapers" title="Wallpapers">🖼</button>
             <button class="nav-btn" data-section="support" title="Apoyo">❤</button>
         </nav>
+        <button id="themeToggle" class="theme-btn" title="Cambiar Tema">☀/🌙</button>
     </aside>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main class="main-content">
         
-        <!-- SECCIÓN: INICIO -->
         <section id="home" class="section active">
             <h1>Runix</h1>
             <p>Web creada para la comunidad</p>
@@ -42,19 +40,15 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: WALLPAPERS -->
         <section id="wallpapers" class="section">
             <h1>Wallpapers</h1>
             
             <div class="filter-buttons" id="filterContainer">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-            </div>
+                </div>
 
             <div class="wallpapers-grid" id="wallpapersGrid">
-                <p style="grid-column: 1/-1; text-align: center;">Cargando...</p>
-            </div>
+                </div>
 
-            <!-- MODAL PARA VER DETALLES -->
             <div id="wallpaperModal" class="modal">
                 <div class="modal-content">
                     <button id="modalClose" class="modal-close">✕</button>
@@ -68,7 +62,6 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: APOYO -->
         <section id="support" class="section">
             <h1>Apoyo</h1>
             
@@ -95,12 +88,7 @@
                     <a href="#" target="_blank" class="btn-support">Ir</a>
                 </div>
             </div>
-
-            <div class="support-footer">
-                <p>¡Gracias por tu apoyo! 💙</p>
-            </div>
         </section>
-
     </main>
 
     <script src="script.js"></script>
