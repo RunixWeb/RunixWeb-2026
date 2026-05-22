@@ -1,0 +1,470 @@
+/* ==================== RESET ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --bg-tertiary: #252d47;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --border: #2d3748;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ==================== SIDEBAR ==================== */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border);
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent);
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn {
+    width: 80%;
+    padding: 1rem;
+    background-color: transparent;
+    border: 2px solid var(--border);
+    color: var(--text-primary);
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.nav-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.nav-btn.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+/* ==================== CONTENEDOR PRINCIPAL ==================== */
+.container {
+    margin-left: 200px;
+    padding: 3rem;
+    max-width: 1200px;
+}
+
+.section {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== TIPOGRAFÍA ==================== */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* ==================== SECCIÓN INICIO ==================== */
+#home h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+#home > p {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.content-text {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+    margin: 2rem 0;
+}
+
+.content-text p {
+    margin-bottom: 1rem;
+}
+
+.quick-links h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.links-grid a {
+    background-color: var(--bg-tertiary);
+    color: var(--accent);
+    padding: 1rem;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    transition: all 0.3s ease;
+}
+
+.links-grid a:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+/* ==================== WALLPAPERS ==================== */
+.filter-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.7rem 1.5rem;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.wallpapers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.wallpaper-card {
+    position: relative;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.wallpaper-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+}
+
+.wallpaper-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.wallpaper-card:hover img {
+    filter: brightness(0.8);
+}
+
+.wallpaper-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 1rem;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.wallpaper-card:hover .wallpaper-overlay {
+    opacity: 1;
+}
+
+.wallpaper-name {
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* ==================== MODAL ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 800px;
+    width: 90%;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--accent);
+}
+
+#modalImage {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.modal-info h3 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.modal-info p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.btn-download {
+    background-color: var(--accent);
+    color: white;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+    background-color: var(--accent-hover);
+}
+
+/* ==================== SECCIÓN APOYAR ==================== */
+.support-text {
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.support-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.support-card {
+    background-color: var(--bg-tertiary);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.support-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+}
+
+.support-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    margin: 0 auto 1rem;
+    object-fit: cover;
+}
+
+.support-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.btn-support {
+    background-color: var(--accent);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-support:hover {
+    background-color: var(--accent-hover);
+}
+
+.support-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.support-footer p {
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px;
+        padding: 1rem 0;
+        gap: 1rem;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .nav-btn span {
+        display: none;
+    }
+
+    .container {
+        margin-left: 80px;
+        padding: 2rem 1rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    #home h1 {
+        font-size: 2rem;
+    }
+
+    .wallpapers-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .links-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 60px;
+    }
+
+    .container {
+        margin-left: 60px;
+        padding: 1.5rem 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .wallpapers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
