@@ -3,45 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RunixWeb - Creador de Contenido</title>
+    <title>RunixWeb</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- SIDEBAR CON BOTONES -->
-    <nav class="sidebar">
-        <div class="logo">RW</div>
-        <button class="nav-btn active" data-section="home">
-            <span>Inicio</span>
-        </button>
-        <button class="nav-btn" data-section="wallpapers">
-            <span>Wallpapers</span>
-        </button>
-        <button class="nav-btn" data-section="support">
-            <span>Apoyar</span>
-        </button>
-    </nav>
+    <!-- HEADER CON BOTONES -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">RW</div>
+        </div>
+        
+        <nav class="nav">
+            <button class="nav-btn active" data-section="home">Home</button>
+            <button class="nav-btn" data-section="wallpapers">Wallpapers</button>
+            <button class="nav-btn" data-section="support">Help us</button>
+        </nav>
+
+        <div class="header-right">
+            <button id="themeToggle" class="theme-toggle">🌙</button>
+        </div>
+    </header>
 
     <!-- CONTENIDO PRINCIPAL -->
     <main class="container">
         
         <!-- SECCIÓN: INICIO -->
         <section id="home" class="section active">
-            <h1>Hola, soy RunixWeb</h1>
-            <p>Creador de contenido • Desarrollador Indie • Artista</p>
+            <h1>RunixWeb</h1>
+            <p>Creador de contenido • Desarrollador • Artista</p>
             
-            <div class="content-text">
-                <p>Aquí encontrarás mis wallpapers originales, proyectos y formas de apoyar mi trabajo.</p>
-                <p>Todo lo que hago es desde <strong>Arch Linux + Hyprland</strong> en una <strong>HP Celeron N4020</strong>.</p>
-                <p>Si te gustan mis creaciones, ¡no dudes en explorar y descargar!</p>
+            <div class="content-box">
+                <p>Bienvenido a mi espacio. Aquí encontrarás wallpapers originales, mis proyectos y formas de apoyar mi trabajo.</p>
+                <p>Todo realizado desde Arch Linux + Hyprland en hardware limitado.</p>
             </div>
 
-            <div class="quick-links">
-                <h3>Mis redes</h3>
+            <div class="links-section">
+                <h2>Mis redes</h2>
                 <div class="links-grid">
-                    <a href="https://twitch.tv/runixweb" target="_blank">Kick</a>
-                    <a href="https://youtube.com/@runixweb" target="_blank">YouTube</a>
-                    <a href="https://github.com/runixweb" target="_blank">GitHub</a>
-                    <a href="https://itch.io/profile/runixweb" target="_blank">itch.io</a>
+                    <a href="#" target="_blank">Kick</a>
+                    <a href="#" target="_blank">YouTube</a>
+                    <a href="#" target="_blank">Discord</a>
+                    <a href="#" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">itch.io</a>
                 </div>
             </div>
         </section>
@@ -60,16 +63,16 @@
 
             <!-- GALERÍA DE WALLPAPERS -->
             <div class="wallpapers-grid" id="wallpapersGrid">
-                <!-- Se llenarán automáticamente con JavaScript -->
+                <!-- Se llenarán automáticamente -->
             </div>
 
             <!-- MODAL PARA VER DETALLES -->
             <div id="wallpaperModal" class="modal">
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <button id="modalClose" class="modal-close">✕</button>
                     <img id="modalImage" src="" alt="">
                     <div class="modal-info">
-                        <h3 id="modalTitle"></h3>
+                        <h2 id="modalTitle"></h2>
                         <p id="modalDetails"></p>
                         <a id="downloadBtn" href="" download class="btn-download">Descargar</a>
                     </div>
@@ -77,34 +80,31 @@
             </div>
         </section>
 
-        <!-- SECCIÓN: APOYAR -->
+        <!-- SECCIÓN: APOYO -->
         <section id="support" class="section">
             <h1>Apoyar mi trabajo</h1>
             
             <div class="support-text">
-                <p>Si disfrutas mis creaciones y quieres apoyar mi trabajo, aquí tienes opciones:</p>
+                <p>Si disfrutas mis creaciones y quieres apoyar, aquí tienes opciones:</p>
             </div>
 
-            <div class="support-options">
+            <div class="support-grid">
                 <div class="support-card">
-                    <img src="assets/icons/patreon.jpg" alt="Patreon" class="support-icon">
-                    <h3>Patreon</h3>
-                    <p>Acceso exclusivo a contenido y wallpapers antes de publicar</p>
-                    <a href="https://patreon.com/runixweb" target="_blank" class="btn-support">Ir a Patreon</a>
+                    <h2>Patreon</h2>
+                    <p>Acceso exclusivo a contenido antes de publicar</p>
+                    <a href="#" target="_blank" class="btn-support">Ir a Patreon</a>
                 </div>
 
                 <div class="support-card">
-                    <img src="assets/icons/kofi.jpg" alt="Ko-fi" class="support-icon">
-                    <h3>Ko-fi</h3>
+                    <h2>Ko-fi</h2>
                     <p>Dona lo que quieras, cuando quieras</p>
-                    <a href="https://ko-fi.com/runixweb" target="_blank" class="btn-support">Ir a Ko-fi</a>
+                    <a href="#" target="_blank" class="btn-support">Ir a Ko-fi</a>
                 </div>
 
                 <div class="support-card">
-                    <img src="assets/icons/github.jpg" alt="GitHub" class="support-icon">
-                    <h3>GitHub</h3>
+                    <h2>GitHub</h2>
                     <p>Apoya dándole star a mis proyectos</p>
-                    <a href="https://github.com/runixweb" target="_blank" class="btn-support">Ir a GitHub</a>
+                    <a href="#" target="_blank" class="btn-support">Ir a GitHub</a>
                 </div>
             </div>
 
