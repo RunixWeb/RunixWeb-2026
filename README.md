@@ -1,6 +1,14 @@
-# RunixWeb-2026
-Web creada por Runix para su comunidad - gracias
+# RunixWeb-2026 — Scaffold mínimo
 
-Este sitio web ha sido creado para cualquier persona, solo atribuye los creditos de lo que ocupes al creador original, no vendas contenido que no es tuyo, eso si, puedes modificar muchas cosas por aquí siempre que quieras apoyar al crecimiento de la comunidad.
+Este repositorio ha sido re-estructurado como un scaffold mínimo para tu sitio web "ArcOrizonStudio".
 
-No se permite monetizar cosas que originalmente no estén monetizadas, para ello o se le pide permiso al creador, o simplemente no se hace, gracias.
+Qué incluye:
+- index.html — estructura básica con secciones vacías para que reemplaces contenido.
+- css/styles.css — hoja de estilos mínima.
+- js/app.js — comportamiento pequeño para botones y navegación.
+
+Instrucciones rápidas:
+- Reemplaza los atributos data-link en los botones por tus URLs de YouTube, GitHub u otros.
+- Edita el contenido en index.html según quieras.
+
+Hecho por: RunixWeb (automatizado por Copilot)

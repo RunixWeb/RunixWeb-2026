@@ -1,96 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RunixWeb</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ArcOrizonStudio — Sitio Placeholder</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="logo">RW</div>
-        <nav class="vertical-nav">
-            <button class="nav-btn active" data-section="home" title="Inicio">⌂</button>
-            <button class="nav-btn" data-section="wallpapers" title="Wallpapers">🖼</button>
-            <button class="nav-btn" data-section="support" title="Apoyo">❤</button>
-        </nav>
-        <button id="themeToggle" class="theme-btn" title="Cambiar Tema">☀/🌙</button>
-    </aside>
+  <!-- HEADER -->
+  <header id="site-header">
+    <nav>
+      <ul>
+        <li><a href="#" id="btn-home">Inicio</a></li>
+        <li><a href="#" id="btn-about">Sobre</a></li>
+        <li><a href="#" id="btn-contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main class="main-content">
-        
-        <section id="home" class="section active">
-            <h1>Runix</h1>
-            <p>Web creada para la comunidad</p>
-            
-            <div class="content-box">
-                <p>Bienvenid@s a tod@s, soy Runix, creador de contenido, artista, desarrollador de videojuegos, animador, youtuber y más.</p>
-                <p>Este sitio ha sido realizado para que me conozcan y tengan algo hecho para la comunidad.</p>
-            </div>
+  <main>
+    <!-- HERO / TITULO -->
+    <section id="hero">
+      <h1>ArcOrizonStudio</h1>
+      <p class="subtitle">Estudio independiente — reemplaza este texto con tu descripción breve</p>
+      <div class="links">
+        <!-- Botones de ejemplo: reemplaza data-link con tu URL -->
+        <button class="external-link" data-link="https://youtube.com/REEMPLAZAME">YouTube (Reemplázame)</button>
+        <button class="external-link" data-link="https://github.com/REEMPLAZAME">GitHub (Reemplázame)</button>
+        <button class="external-link" data-link="https://tuweb.com/REEMPLAZAME">Otra web (Reemplázame)</button>
+      </div>
+    </section>
 
-            <div class="links-section">
-                <h2>Mis redes</h2>
-                <div class="links-grid">
-                    <a href="#" target="_blank">Kick</a>
-                    <a href="#" target="_blank">YouTube</a>
-                    <a href="#" target="_blank">Discord</a>
-                    <a href="#" target="_blank">GitHub</a>
-                    <a href="#" target="_blank">itch.io</a>
-                </div>
-            </div>
-        </section>
+    <!-- DESCRIPCION -->
+    <section id="description">
+      <!-- Reemplaza el contenido dentro de <p> con tu descripción o enlaza a tu CMS -->
+      <h2>Descripción</h2>
+      <p><!-- Reemplaza este párrafo por tu descripción. -->Aquí va una breve descripción de tu estudio, proyectos y contactos.</p>
+    </section>
 
-        <section id="wallpapers" class="section">
-            <h1>Wallpapers</h1>
-            
-            <div class="filter-buttons" id="filterContainer">
-                </div>
+    <!-- MODULO PEQUEÑO -->
+    <section id="small-module">
+      <h3>Módulo rápido</h3>
+      <p>Reemplaza este módulo con información o enlaces rápidos.</p>
+    </section>
+  </main>
 
-            <div class="wallpapers-grid" id="wallpapersGrid">
-                </div>
+  <footer>
+    <p>© ArcOrizonStudio — Reemplaza con tus enlaces y redes</p>
+  </footer>
 
-            <div id="wallpaperModal" class="modal">
-                <div class="modal-content">
-                    <button id="modalClose" class="modal-close">✕</button>
-                    <img id="modalImage" src="" alt="">
-                    <div class="modal-info">
-                        <h2 id="modalTitle"></h2>
-                        <p id="modalDetails"></p>
-                        <a id="downloadBtn" href="" download class="btn-download">Descargar</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="support" class="section">
-            <h1>Apoyo</h1>
-            
-            <div class="support-text">
-                <p>Si disfrutas mi trabajo y quieres apoyar, aquí hay opciones:</p>
-            </div>
-
-            <div class="support-grid">
-                <div class="support-card">
-                    <h2>Patreon</h2>
-                    <p>Acceso exclusivo a contenido</p>
-                    <a href="#" target="_blank" class="btn-support">Ir</a>
-                </div>
-
-                <div class="support-card">
-                    <h2>Ko-fi</h2>
-                    <p>Dona lo que quieras</p>
-                    <a href="#" target="_blank" class="btn-support">Ir</a>
-                </div>
-
-                <div class="support-card">
-                    <h2>GitHub</h2>
-                    <p>Apoya mis proyectos</p>
-                    <a href="#" target="_blank" class="btn-support">Ir</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+/* styles.css — Hoja de estilos mínima para el scaffold
+   Reemplaza o amplía según quieras. */
+
+:root{
+  --bg:#0f1720;
+  --card:#0b1220;
+  --muted:#9aa3b2;
+  --accent:#7dd3fc;
+  --text:#e6eef6;
+  --max-width:1000px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;padding:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--text);background:linear-gradient(180deg,var(--bg),#071020);}
+
+#site-header{padding:18px 24px;background:transparent}
+#site-header nav ul{display:flex;gap:12px;list-style:none;padding:0;margin:0}
+#site-header a{color:var(--accent);text-decoration:none}
+
+main{max-width:var(--max-width);margin:36px auto;padding:20px}
+
+#hero{padding:28px;border-radius:10px;background:rgba(255,255,255,0.02);margin-bottom:18px}
+#hero h1{margin:0;font-size:2rem}
+.subtitle{color:var(--muted);margin-top:6px}
+.links{margin-top:14px;display:flex;gap:10px}
+.external-link{background:transparent;border:1px solid rgba(125,211,252,0.18);color:var(--accent);padding:8px 12px;border-radius:6px;cursor:pointer}
+
+section{margin-bottom:18px;padding:16px;background:rgba(255,255,255,0.01);border-radius:8px}
+
+footer{max-width:var(--max-width);margin:24px auto;padding:12px;color:var(--muted);text-align:center}
+
+/* Comentarios: deja estos estilos o elimínalos. */
