@@ -1,14 +1,5 @@
-# RunixWeb-2026 — Scaffold mínimo
+Runix web
 
-Este repositorio ha sido re-estructurado como un scaffold mínimo para tu sitio web "ArcOrizonStudio".
+Un sitio que busca dar a conocer al equipo detras de RunixTC, creado para la comunidad indie.
 
-Qué incluye:
-- index.html — estructura básica con secciones vacías para que reemplaces contenido.
-- css/styles.css — hoja de estilos mínima.
-- js/app.js — comportamiento pequeño para botones y navegación.
-
-Instrucciones rápidas:
-- Reemplaza los atributos data-link en los botones por tus URLs de YouTube, GitHub u otros.
-- Edita el contenido en index.html según quieras.
-
-Hecho por: RunixWeb (automatizado por Copilot)
+Gracias a ArcOrizonStudio y CodeInkStudio esto ha sido posible realizarlo.
