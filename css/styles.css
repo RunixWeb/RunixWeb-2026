@@ -1,32 +1,103 @@
-/* styles.css — Hoja de estilos mínima para el scaffold
-   Reemplaza o amplía según quieras. */
-
+/* styles.css — Simple, minimal palette: dark greys + sidebar modules blue/yellow
+   Variables at top: cambia fácilmente los colores aquí. */
 :root{
-  --bg:#0f1720;
-  --card:#0b1220;
-  --muted:#9aa3b2;
-  --accent:#7dd3fc;
-  --text:#e6eef6;
-  --max-width:1000px;
+  /* Paleta general (cambia estos valores) */
+  --bg: #0b0d0f;           /* fondo general (muy oscuro) */
+  --panel: #141516;        /* paneles y secciones */
+  --muted: #9aa3b2;        /* texto secundario */
+  --text: #e6eef6;         /* texto principal claro */
+  --accent: #7dd3fc;       /* acento leve (no dominante) */
+
+  /* Sidebar colors */
+  --sidebar-width: 260px;
+  --sidebar-gap: 20px;
+  --module-blue: #0b63a6;  /* azul para módulos */
+  --module-yellow: #d6a100;/* amarillo para módulos */
+
+  --max-width: 1000px;
 }
 
+/* Reset mínimo */
 *{box-sizing:border-box}
-html,body{height:100%;margin:0;padding:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--text);background:linear-gradient(180deg,var(--bg),#071020);}
+html,body{height:100%;margin:0;padding:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;color:var(--text);background:var(--bg)}
 
-#site-header{padding:18px 24px;background:transparent}
-#site-header nav ul{display:flex;gap:12px;list-style:none;padding:0;margin:0}
-#site-header a{color:var(--accent);text-decoration:none}
+/* Layout: dos columnas verticales: sidebar izquierda + contenido derecha más grande */
+.container{
+  display:flex;
+  gap:var(--sidebar-gap);
+  max-width: calc(var(--max-width) + var(--sidebar-width) + var(--sidebar-gap));
+  margin: 24px auto;
+  padding: 0 18px;
+  align-items:flex-start;
+}
 
-main{max-width:var(--max-width);margin:36px auto;padding:20px}
+/* Sidebar */
+#sidebar{
+  width:var(--sidebar-width);
+  flex:0 0 var(--sidebar-width);
+  position:sticky;
+  top:20px;
+  height: calc(100vh - 40px);
+  align-self:flex-start;
+  overflow:hidden;
+}
+.side-modules{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  height:100%;
+  padding:6px;
+  overflow:auto;
+}
 
-#hero{padding:28px;border-radius:10px;background:rgba(255,255,255,0.02);margin-bottom:18px}
-#hero h1{margin:0;font-size:2rem}
-.subtitle{color:var(--muted);margin-top:6px}
-.links{margin-top:14px;display:flex;gap:10px}
-.external-link{background:transparent;border:1px solid rgba(125,211,252,0.18);color:var(--accent);padding:8px 12px;border-radius:6px;cursor:pointer}
+/* Módulo lateral: icono pequeño a la izquierda, texto a la derecha */
+.side-module{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  background:var(--panel);
+  padding:10px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.03);
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.side-module:focus{outline:2px solid rgba(125,211,252,0.06);outline-offset:3px}
+.side-module:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,0.6)}
 
-section{margin-bottom:18px;padding:16px;background:rgba(255,255,255,0.01);border-radius:8px}
+.side-icon{
+  width:40px;height:40px;flex:0 0 40px;border-radius:6px;display:grid;place-items:center;overflow:hidden;background:rgba(255,255,255,0.02)
+}
+.side-icon img{width:100%;height:100%;object-fit:contain;display:block}
 
-footer{max-width:var(--max-width);margin:24px auto;padding:12px;color:var(--muted);text-align:center}
+.side-text h4{margin:0;font-size:0.98rem}
+.side-desc{margin:6px 0 0 0;color:var(--muted);font-size:0.86rem}
 
-/* Comentarios: deja estos estilos o elimínalos. */
+/* Colores simples para módulos: azul o amarillo (claro y directo) */
+.side-module.blue{border-left:4px solid var(--module-blue)}
+.side-module.blue .side-icon{background:var(--module-blue);color:#fff}
+
+.side-module.yellow{border-left:4px solid var(--module-yellow)}
+.side-module.yellow .side-icon{background:var(--module-yellow);color:#071022}
+
+/* Contenido principal (derecha) — muy simple y limpio, espacio para escribir */
+main{
+  flex:1 1 auto;
+  max-width:var(--max-width);
+}
+
+/* Secciones vacías: dejar espacio y un estilo neutro */
+main section{background:transparent;padding:14px;border-radius:8px;margin-bottom:16px;border:1px dashed rgba(255,255,255,0.02)}
+main h2, main h3, main h4{margin:0 0 8px 0;color:var(--text)}
+main p{margin:0;color:var(--muted)}
+
+/* Footer simple */
+footer{max-width:var(--max-width);margin:18px auto;padding:12px;color:var(--muted);text-align:center}
+
+/* Responsivo: en pantallas pequeñas el sidebar va arriba como fila horizontal */
+@media (max-width:920px){
+  .container{flex-direction:column;max-width:var(--max-width);padding:0 12px}
+  #sidebar{position:relative;width:100%;height:auto;top:0}
+  .side-modules{flex-direction:row;overflow-x:auto}
+  .side-module{min-width:200px;flex:0 0 auto}
+}
