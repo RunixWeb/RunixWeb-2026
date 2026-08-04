@@ -22,7 +22,7 @@
     <!-- HERO / TITULO -->
     <section id="hero">
       <h1>RunixTC</h1>
-      <p class="subtitle">Creador de contenido, animador, editor, desarrollador, escritor y músico. </p>
+      <p class="subtitle">Creador de contenido, animador, editor, desarrollador, escritor y músico.</p>
       <div class="links">
         <!-- Botones de ejemplo: reemplaza data-link con tu URL -->
         <button class="external-link" data-link="https://www.youtube.com/@Runix_el_raro">YouTube (Canal principal)</button>
@@ -37,13 +37,42 @@
     <section id="description">
       <!-- Reemplaza el contenido dentro de <p> con tu descripción o enlaza a tu CMS -->
       <h2>Descripción</h2>
-      <p>Un desarrollador independiente que ha usado Godot, Unity, Java, Python y C++, aunque, realmente solo busco crear algo diferente con algo indie</p>
+      <p>Un desarrollador independiente que ha usado Godot, Unity, Java, Python y C++, aunque, realmente solo busco crear algo diferente con algo indie.</p>
     </section>
 
     <!-- MODULO PEQUEÑO -->
     <section id="small-module">
       <h3>Porqué?</h3>
       <p>Por años como creador, alguien que busca algo nuevo en lugar de algo muy usado.</p>
+    </section>
+
+    <!-- NUEVO: ESTUDIOS (MÓDULOS ICONO + DESCRIPCIÓN) -->
+    <!-- Instrucciones: coloca tus iconos en la carpeta "icons/" (ej: icons/arcorizon.svg).
+         Para añadir más módulos, copia el bloque <article class="studio ..."> y cambia el src del <img> y el texto.
+         Usa la clase "left" para que el icono esté a la izquierda, y "right" para ponerlo a la derecha. -->
+    <section id="studios">
+      <h2>Estudios</h2>
+      <div class="studios-grid">
+        <!-- Ejemplo: ArcOrizonStudio (icono a la izquierda) -->
+        <article class="studio left" aria-labelledby="studio-arc-title">
+          <img src="icons/arcorizon.svg" alt="ArcOrizonStudio icon" class="studio-icon">
+          <div class="studio-content">
+            <h3 id="studio-arc-title">ArcOrizonStudio</h3>
+            <p>Estudio fundado por Runix y un amigo, enfocado en colaboraciones creativas y proyectos experimentales.</p>
+          </div>
+        </article>
+
+        <!-- Ejemplo: CodeInkStudio (icono a la derecha) -->
+        <article class="studio right" aria-labelledby="studio-code-title">
+          <img src="icons/codeink.svg" alt="CodeInkStudio icon" class="studio-icon">
+          <div class="studio-content">
+            <h3 id="studio-code-title">CodeInkStudio</h3>
+            <p>Estudio personal de Runix, centrado en herramientas, juegos y prototipos propios.</p>
+          </div>
+        </article>
+
+        <!-- Añade aquí más <article class="studio left|right"> ... -->
+      </div>
     </section>
 
     <!-- Frase -->
@@ -56,6 +85,19 @@
       posible, no necesariamente por una paga, si no unicamente por el hábito de crear algo por mi cuenta 
       algo que no solo resulte de ayuda a alguien, si no que realmente pueda ser entretenido de usar, o jugar.</p>
     </section>
+
+    <!-- NUEVO: AGRADECIMIENTOS / HOMENAJE -->
+    <section id="acknowledgements">
+      <h2>Agradecimientos</h2>
+      <p>Este proyecto y mi aprendizaje han sido posibles gracias al apoyo y colaboración de muchas personas. Aquí algunas de ellas:</p>
+      <ul class="ack-list">
+        <li class="ack-item">LuPyther</li>
+        <li class="ack-item">Fabian</li>
+        <li class="ack-item">Vaisitron</li>
+        <!-- Añade más <li class="ack-item">Nombre</li> para listar más colaboradores -->
+      </ul>
+    </section>
+
   </main>
 
   <footer>
@@ -65,5 +107,16 @@
   </footer>
 
   <script src="js/app.js"></script>
+  <script>
+    // Maneja los botones con data-link (abre en nueva pestaña)
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest('.external-link');
+      if (!btn) return;
+      const url = btn.dataset.link;
+      if (url) window.open(url, '_blank', 'noopener');
+    });
+
+    // Nota: para añadir más estudios en el futuro solo duplica el <article class="studio ..."> en la sección #studios
+  </script>
 </body>
 </html>
