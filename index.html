@@ -18,87 +18,87 @@
     </nav>
   </header>
 
-  <main>
-    <!-- HERO / TITULO -->
-    <section id="hero">
-      <h1>RunixTC</h1>
-      <p class="subtitle">Creador de contenido, animador, editor, desarrollador, escritor y músico.</p>
-      <div class="links">
-        <!-- Botones de ejemplo: reemplaza data-link con tu URL -->
-        <button class="external-link" data-link="https://www.youtube.com/@Runix_el_raro">YouTube (Canal principal)</button>
-        <button class="external-link" data-link="https://www.youtube.com/@MusicOperationProblem">Youtube (Canal de música)</button>
-        <button class="external-link" data-link="https://github.com/REEMPLAZAME">GitHub</button>
-        <button class="external-link" data-link="https://runix-yt.itch.io/">Itch.io</button>
-        <button class="external-link" data-link="https://getinkspired.com/es/u/runix_el_raro/">Inkspired</button>
-      </div>
-    </section>
+  <!-- CONTENEDOR PRINCIPAL: sidebar (izquierda) + contenido (centrado) -->
+  <div class="container">
 
-    <!-- DESCRIPCION -->
-    <section id="description">
-      <!-- Reemplaza el contenido dentro de <p> con tu descripción o enlaza a tu CMS -->
-      <h2>Descripción</h2>
-      <p>Un desarrollador independiente que ha usado Godot, Unity, Java, Python y C++, aunque, realmente solo busco crear algo diferente con algo indie.</p>
-    </section>
-
-    <!-- MODULO PEQUEÑO -->
-    <section id="small-module">
-      <h3>Porqué?</h3>
-      <p>Por años como creador, alguien que busca algo nuevo en lugar de algo muy usado.</p>
-    </section>
-
-    <!-- NUEVO: ESTUDIOS (MÓDULOS ICONO + DESCRIPCIÓN) -->
+    <!-- SIDEBAR: aquí van los módulos verticales (icono pequeño a la izquierda) -->
     <!-- Instrucciones: coloca tus iconos en la carpeta "icons/" (ej: icons/arcorizon.svg).
-         Para añadir más módulos, copia el bloque <article class="studio ..."> y cambia el src del <img> y el texto.
-         Usa la clase "left" para que el icono esté a la izquierda, y "right" para ponerlo a la derecha. -->
-    <section id="studios">
-      <h2>Estudios</h2>
-      <div class="studios-grid">
-        <!-- Ejemplo: ArcOrizonStudio (icono a la izquierda) -->
-        <article class="studio left" aria-labelledby="studio-arc-title">
-          <img src="icons/arcorizon.svg" alt="ArcOrizonStudio icon" class="studio-icon">
-          <div class="studio-content">
-            <h3 id="studio-arc-title">ArcOrizonStudio</h3>
-            <p>Estudio fundado por Runix y un amigo, enfocado en colaboraciones creativas y proyectos experimentales.</p>
+         Para añadir más módulos duplica el <article class="side-module"> y cambia img src, id y textos. -->
+    <aside id="sidebar" aria-label="Módulos laterales">
+      <div class="side-modules">
+        <article class="side-module" id="module-arcorizon" tabindex="0" aria-labelledby="m-arc-title">
+          <img src="icons/arcorizon.svg" alt="ArcOrizonStudio icon" class="side-icon" />
+          <div class="side-text">
+            <h4 id="m-arc-title">ArcOrizonStudio</h4>
+            <p class="side-desc">Estudio fundado por Runix y un amigo. Colaboraciones creativas y proyectos experimentales.</p>
           </div>
         </article>
 
-        <!-- Ejemplo: CodeInkStudio (icono a la derecha) -->
-        <article class="studio right" aria-labelledby="studio-code-title">
-          <img src="icons/codeink.svg" alt="CodeInkStudio icon" class="studio-icon">
-          <div class="studio-content">
-            <h3 id="studio-code-title">CodeInkStudio</h3>
-            <p>Estudio personal de Runix, centrado en herramientas, juegos y prototipos propios.</p>
+        <article class="side-module" id="module-codeink" tabindex="0" aria-labelledby="m-code-title">
+          <img src="icons/codeink.svg" alt="CodeInkStudio icon" class="side-icon" />
+          <div class="side-text">
+            <h4 id="m-code-title">CodeInkStudio</h4>
+            <p class="side-desc">Estudio personal de Runix, centrado en herramientas, juegos y prototipos.</p>
           </div>
         </article>
 
-        <!-- Añade aquí más <article class="studio left|right"> ... -->
+        <!-- Añade más módulos aquí: duplicar article.side-module y poner el icono en icons/ -->
       </div>
-    </section>
+    </aside>
 
-    <!-- Frase -->
-    <section id="porque-no">
-      <h4>Contexto</h4>
-      <p>He comenzado como creador gracias a una sola cosa, quiero hacerlo a mi modo.
-      Como creador, he definido mi contenido por 2 cosas, la creacion de mis propios proyectos, y 
-      la participacion en proyectos de otros creadores, muchas veces creo que los creadores saben 
-      como llevar a cabo su proyecto, asi que, por lo menos conmigo, he intentado ayudar en lo máximo 
-      posible, no necesariamente por una paga, si no unicamente por el hábito de crear algo por mi cuenta 
-      algo que no solo resulte de ayuda a alguien, si no que realmente pueda ser entretenido de usar, o jugar.</p>
-    </section>
+    <!-- CONTENIDO CENTRAL -->
+    <main>
+      <!-- HERO / TITULO -->
+      <section id="hero">
+        <h1>RunixTC</h1>
+        <p class="subtitle">Creador de contenido, animador, editor, desarrollador, escritor y músico.</p>
+        <div class="links">
+          <!-- Botones de ejemplo: reemplaza data-link con tu URL -->
+          <button class="external-link" data-link="https://www.youtube.com/@Runix_el_raro">YouTube (Canal principal)</button>
+          <button class="external-link" data-link="https://www.youtube.com/@MusicOperationProblem">Youtube (Canal de música)</button>
+          <button class="external-link" data-link="https://github.com/REEMPLAZAME">GitHub</button>
+          <button class="external-link" data-link="https://runix-yt.itch.io/">Itch.io</button>
+          <button class="external-link" data-link="https://getinkspired.com/es/u/runix_el_raro/">Inkspired</button>
+        </div>
+      </section>
 
-    <!-- NUEVO: AGRADECIMIENTOS / HOMENAJE -->
-    <section id="acknowledgements">
-      <h2>Agradecimientos</h2>
-      <p>Este proyecto y mi aprendizaje han sido posibles gracias al apoyo y colaboración de muchas personas. Aquí algunas de ellas:</p>
-      <ul class="ack-list">
-        <li class="ack-item">LuPyther</li>
-        <li class="ack-item">Fabian</li>
-        <li class="ack-item">Vaisitron</li>
-        <!-- Añade más <li class="ack-item">Nombre</li> para listar más colaboradores -->
-      </ul>
-    </section>
+      <!-- DESCRIPCION -->
+      <section id="description">
+        <h2>Descripción</h2>
+        <p>Un desarrollador independiente que ha usado Godot, Unity, Java, Python y C++, aunque, realmente solo busco crear algo diferente con algo indie.</p>
+      </section>
 
-  </main>
+      <!-- MODULO PEQUEÑO -->
+      <section id="small-module">
+        <h3>Porqué?</h3>
+        <p>Por años como creador, alguien que busca algo nuevo en lugar de algo muy usado.</p>
+      </section>
+
+      <!-- Frase -->
+      <section id="porque-no">
+        <h4>Contexto</h4>
+        <p>He comenzado como creador gracias a una sola cosa, quiero hacerlo a mi modo.
+        Como creador, he definido mi contenido por 2 cosas, la creacion de mis propios proyectos, y 
+        la participacion en proyectos de otros creadores, muchas veces creo que los creadores saben 
+        como llevar a cabo su proyecto, asi que, por lo menos conmigo, he intentado ayudar en lo máximo 
+        posible, no necesariamente por una paga, si no unicamente por el hábito de crear algo por mi cuenta 
+        algo que no solo resulte de ayuda a alguien, si no que realmente pueda ser entretenido de usar, o jugar.</p>
+      </section>
+
+      <!-- AGRADECIMIENTOS / HOMENAJE -->
+      <section id="acknowledgements">
+        <h2>Agradecimientos</h2>
+        <p>Este proyecto y mi aprendizaje han sido posibles gracias al apoyo y colaboración de muchas personas. Aquí algunas de ellas:</p>
+        <ul class="ack-list">
+          <li class="ack-item">LuPyther</li>
+          <li class="ack-item">Fabian</li>
+          <li class="ack-item">Vaisitron</li>
+        </ul>
+      </section>
+
+    </main>
+
+  </div> <!-- .container -->
 
   <footer>
     <p>© RunixTC, sitio creado con el unico propósito de ser algo más que una web.</p>
@@ -116,7 +116,14 @@
       if (url) window.open(url, '_blank', 'noopener');
     });
 
-    // Nota: para añadir más estudios en el futuro solo duplica el <article class="studio ..."> en la sección #studios
+    // Pequeña mejora: si haces clic en un side-module, puedes navegar (por ejemplo) a una sección
+    document.querySelectorAll('.side-module').forEach(function(el){
+      el.addEventListener('click', function(){
+        // comportamiento por defecto: resaltar levemente
+        el.classList.add('active');
+        setTimeout(()=>el.classList.remove('active'),300);
+      });
+    });
   </script>
 </body>
 </html>
