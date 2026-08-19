@@ -5,8 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>RunixTC</title>
   <link rel="stylesheet" href="css/styles.css">
+  <!-- SVG filter para aberración cromática -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;">
+    <filter id="chromatic" x="-20%" y="-20%" width="140%" height="140%">
+      <!-- Canal rojo desplazado a la derecha -->
+      <feColorMatrix in="SourceGraphic" result="orig" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+      <feOffset in="orig" dx="2" dy="0" result="r"/>
+      <feColorMatrix in="r" type="matrix" result="rcol" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+      <!-- Canal azul desplazado a la izquierda -->
+      <feOffset in="orig" dx="-2" dy="0" result="b"/>
+      <feColorMatrix in="b" type="matrix" result="bcol" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+      <feBlend in="rcol" in2="bcol" mode="screen" result="rb"/>
+      <feBlend in="rb" in2="orig" mode="screen"/>
+    </filter>
+  </svg>
 </head>
-<body>
+<body class="crt">
   <!-- HEADER -->
   <header id="site-header">
     <nav>
@@ -34,10 +48,10 @@
           </div>
         </article>
 
-        <article class="side-module yellow" id="module-crabinc" tabindex="0" aria-labelledby="m-code-title">
-          <img src="icons/crabinc.svg" alt="CrabIncStudio icon" class="side-icon" />
+        <article class="side-module yellow" id="module-crabcode" tabindex="0" aria-labelledby="m-code-title">
+          <img src="icons/crabcode.svg" alt="CrabCodeStudio icon" class="side-icon" />
           <div class="side-text">
-            <h4 id="m-code-title">CrabIncStudio</h4>
+            <h4 id="m-code-title">CrabCodeStudio</h4>
             <p class="side-desc">Estudio personal de Runix, centrado en herramientas, juegos y prototipos.</p>
           </div>
         </article>
@@ -51,7 +65,7 @@
       <!-- HERO / TITULO -->
       <section id="hero">
         <div class="hero-inner">
-          <img src="icons/runix.svg" alt="RunixTC icon" class="hero-icon" />
+          <img src="icons/runix.svg" alt="RunixTC icon" class="hero-icon aberrate" />
           <div>
             <h1>RunixTC</h1>
             <p class="subtitle">Creador de contenido, animador, editor, desarrollador, escritor y músico.</p>
@@ -104,18 +118,27 @@
       <!-- WALLPAPERS / CARRUSEL -->
       <section id="wallpapers">
         <h2>Wallpapers</h2>
-        <p class="subtitle">Galería de fondos. Usa las flechas o deja que se desplace automáticamente.</p>
+        <p class="subtitle">Galería de fondos. Selecciona el que quieras y usa el botón de descargar en cada imagen.</p>
         <div class="carousel" aria-roledescription="carousel">
           <button class="carousel-btn prev" aria-label="Anterior">‹</button>
           <div class="carousel-track">
-            <div class="slide" data-src="wallpapers/wall1.svg"><img src="wallpapers/wall1.svg" alt="Wallpaper 1"></div>
-            <div class="slide" data-src="wallpapers/wall2.svg"><img src="wallpapers/wall2.svg" alt="Wallpaper 2"></div>
-            <div class="slide" data-src="wallpapers/wall3.svg"><img src="wallpapers/wall3.svg" alt="Wallpaper 3"></div>
+            <div class="slide" data-src="wallpapers/wall1.svg">
+              <img src="wallpapers/wall1.svg" alt="Wallpaper 1" class="aberrate">
+              <button class="download-single">Descargar</button>
+            </div>
+            <div class="slide" data-src="wallpapers/wall2.svg">
+              <img src="wallpapers/wall2.svg" alt="Wallpaper 2" class="aberrate">
+              <button class="download-single">Descargar</button>
+            </div>
+            <div class="slide" data-src="wallpapers/wall3.svg">
+              <img src="wallpapers/wall3.svg" alt="Wallpaper 3" class="aberrate">
+              <button class="download-single">Descargar</button>
+            </div>
           </div>
           <button class="carousel-btn next" aria-label="Siguiente">›</button>
         </div>
         <div class="carousel-actions">
-          <button id="download-all" class="download-btn">Descargar todos los wallpapers</button>
+          <!-- Se elimina el botón descargar todos; la descarga es individual -->
         </div>
       </section>
 
@@ -126,7 +149,7 @@
   <footer>
     <p>© RunixTC, sitio creado con el unico propósito de ser algo más que una web.</p>
     <p>Colaborando con LuPyther, Fabian y Vaisitron</p>
-    <p>Estudios involucrados: ArcOrizonStudio y CrabIncStudio</p>
+    <p>Estudios involucrados: ArcOrizonStudio y CrabCodeStudio</p>
   </footer>
 
   <script src="js/app.js"></script>
