@@ -19,99 +19,16 @@
   </svg>
 </head>
 <body class="crt">
-  <!-- HEADER -->
-  <header id="site-header">
-    <nav>
-      <ul>
-        <li><a href="#" id="btn-home">Home</a></li>
-        <li><a href="#" id="btn-about">About</a></li>
-        <li><a href="#" id="btn-contact">More</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- CONTENEDOR PRINCIPAL: sidebar (izquierda) + contenido (centrado) -->
-  <div class="container">
-
-    <!-- SIDEBAR -->
-    <aside id="sidebar" aria-label="Módulos laterales">
-      <div class="side-modules">
-        <article class="side-module blue" id="module-arcorizon" tabindex="0" aria-labelledby="m-arc-title">
-          <img src="icons/ArcOrizonStudio.png" alt="ArcOrizonStudio icon" class="side-icon" loading="lazy" />
-          <div class="side-text">
-            <h4 id="m-arc-title">ArcOrizonStudio</h4>
-            <p class="side-desc">Estudio fundado por Runix y un amigo. Colaboraciones creativas y proyectos experimentales.</p>
-          </div>
-        </article>
-
-        <article class="side-module yellow" id="module-crabcode" tabindex="0" aria-labelledby="m-code-title">
-          <img src="icons/CrabCodeStudio.png" alt="CrabCodeStudio icon" class="side-icon" loading="lazy" />
-          <div class="side-text">
-            <h4 id="m-code-title">CrabCodeStudio</h4>
-            <p class="side-desc">Estudio personal de Runix, centrado en herramientas, juegos y prototipos.</p>
-          </div>
-        </article>
-
-      </div>
-    </aside>
-
-    <!-- CONTENIDO CENTRAL -->
-    <main>
-      <!-- HERO / TITULO -->
-      <section id="hero">
-        <div class="hero-inner">
-          <img src="icons/RunixTC.png" alt="RunixTC icon" class="hero-icon aberrate" loading="lazy" />
-          <div>
-            <h1>RunixTC</h1>
-            <p class="subtitle">Creador de contenido, animador, editor, desarrollador, escritor y músico.</p>
-            <div class="links">
-              <button class="external-link btn" data-link="https://www.youtube.com/@Runix_el_raro">YouTube (Canal principal)</button>
-              <button class="external-link btn" data-link="https://www.youtube.com/@MusicOperationProblem">Youtube (Canal de música)</button>
-              <button class="external-link btn" data-link="https://github.com/REEMPLAZAME">GitHub</button>
-              <button class="external-link btn" data-link="https://runix-yt.itch.io/">Itch.io</button>
-              <button class="external-link btn" data-link="https://getinkspired.com/es/u/runix_el_raro/">Inkspired</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- DESCRIPCION -->
-      <section id="description">
-        <h2>Descripción</h2>
-        <p>Un desarrollador independiente que ha usado Godot, Unity, Java, Python y C++, aunque, realmente solo busco crear algo diferente con algo indie.</p>
-      </section>
-
-      <!-- WALLPAPERS / GALERÍA DINÁMICA -->
-      <section id="wallpapers">
-        <h2>Wallpapers</h2>
-        <p class="subtitle">Galería de fondos. Selecciona el que quieras y usa el botón de descargar en cada imagen.</p>
-        <div id="filterContainer" class="filter-buttons" aria-hidden="false"></div>
-        <div id="wallpapersGrid" class="wallpapers-grid" aria-live="polite"></div>
-
-        <!-- Modal -->
-        <div id="wallpaperModal" class="modal" role="dialog" aria-hidden="true" aria-modal="true">
-          <div class="modal-content">
-            <button id="modalClose" class="modal-close" aria-label="Cerrar">✕</button>
-            <h3 id="modalTitle">Imagen</h3>
-            <img id="modalImage" src="" alt="" />
-            <div id="modalDetails"></div>
-            <div style="display:flex;gap:.5rem;margin-top:.6rem;">
-              <a id="downloadBtn" class="btn" href="#" download>Descargar</a>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-    </main>
-
-  </div> <!-- .container -->
-
-  <footer>
-    <p>© RunixTC, sitio creado con el unico propósito de ser algo más que una web.</p>
-    <p>Colaborando con LuPyther, Fabian y Vaisitron</p>
-    <p>Estudios involucrados: ArcOrizonStudio y CrabCodeStudio</p>
-  </footer>
+  <main class="center">
+    <img src="icons/RunixTC.png" alt="RunixTC icon" class="hero-icon" loading="lazy">
+    <h1>RunixTC</h1>
+    <div class="links">
+      <button class="external-link btn" data-link="https://www.youtube.com/@Runix_el_raro">YouTube</button>
+      <button class="external-link btn" data-link="https://www.youtube.com/@MusicOperationProblem">Music</button>
+      <button class="external-link btn" data-link="https://github.com/RunixWeb">GitHub</button>
+      <button class="external-link btn" data-link="https://runix-yt.itch.io/">Itch.io</button>
+    </div>
+  </main>
 
   <script src="js/app.js" defer></script>
 </body>
