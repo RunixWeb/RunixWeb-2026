@@ -36,12 +36,13 @@
   <div class="container">
 
     <!-- SIDEBAR: aquí van los módulos verticales (icono pequeño a la izquierda) -->
-    <!-- Instrucciones: coloca tus iconos en la carpeta "icons/" (ej: icons/arcorizon.svg).
+    <!-- Instrucciones: coloca tus iconos en la carpeta "icons/" (ej: icons/ArcOrizonStudio.png).
          Para añadir más módulos duplica el <article class="side-module"> y cambia img src, id y textos. -->
     <aside id="sidebar" aria-label="Módulos laterales">
       <div class="side-modules">
         <article class="side-module blue" id="module-arcorizon" tabindex="0" aria-labelledby="m-arc-title">
-          <img src="icons/arcorizon.svg" alt="ArcOrizonStudio icon" class="side-icon" />
+          <!-- Usar los PNG que ya están en icons/ -->
+          <img src="icons/ArcOrizonStudio.png" alt="ArcOrizonStudio icon" class="side-icon" />
           <div class="side-text">
             <h4 id="m-arc-title">ArcOrizonStudio</h4>
             <p class="side-desc">Estudio fundado por Runix y un amigo. Colaboraciones creativas y proyectos experimentales.</p>
@@ -49,7 +50,8 @@
         </article>
 
         <article class="side-module yellow" id="module-crabcode" tabindex="0" aria-labelledby="m-code-title">
-          <img src="icons/crabcode.svg" alt="CrabCodeStudio icon" class="side-icon" />
+          <!-- Archivo con espacio en nombre en el repo; referencia URL-encoded para evitar errores -->
+          <img src="icons/CrabCodeStudio%20.png" alt="CrabCodeStudio icon" class="side-icon" />
           <div class="side-text">
             <h4 id="m-code-title">CrabCodeStudio</h4>
             <p class="side-desc">Estudio personal de Runix, centrado en herramientas, juegos y prototipos.</p>
@@ -65,7 +67,7 @@
       <!-- HERO / TITULO -->
       <section id="hero">
         <div class="hero-inner">
-          <img src="icons/runix.svg" alt="RunixTC icon" class="hero-icon aberrate" />
+          <img src="icons/RunixTC.png" alt="RunixTC icon" class="hero-icon aberrate" />
           <div>
             <h1>RunixTC</h1>
             <p class="subtitle">Creador de contenido, animador, editor, desarrollador, escritor y músico.</p>
@@ -115,31 +117,25 @@
         </ul>
       </section>
 
-      <!-- WALLPAPERS / CARRUSEL -->
+      <!-- WALLPAPERS / GALERÍA -->
       <section id="wallpapers">
         <h2>Wallpapers</h2>
         <p class="subtitle">Galería de fondos. Selecciona el que quieras y usa el botón de descargar en cada imagen.</p>
-        <div class="carousel" aria-roledescription="carousel">
-          <button class="carousel-btn prev" aria-label="Anterior">‹</button>
-          <div class="carousel-track">
-            <div class="slide" data-src="wallpapers/wall1.svg">
-              <img src="wallpapers/wall1.svg" alt="Wallpaper 1" class="aberrate">
-              <button class="download-single">Descargar</button>
-            </div>
-            <div class="slide" data-src="wallpapers/wall2.svg">
-              <img src="wallpapers/wall2.svg" alt="Wallpaper 2" class="aberrate">
-              <button class="download-single">Descargar</button>
-            </div>
-            <div class="slide" data-src="wallpapers/wall3.svg">
-              <img src="wallpapers/wall3.svg" alt="Wallpaper 3" class="aberrate">
-              <button class="download-single">Descargar</button>
-            </div>
+
+        <div id="filterContainer" class="filter-buttons" aria-hidden="false"></div>
+        <div id="wallpapersGrid" class="wallpapers-grid" aria-live="polite"></div>
+
+        <!-- Modal para ver y descargar individualmente -->
+        <div id="wallpaperModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+          <div class="modal-content">
+            <button id="modalClose" class="modal-close" aria-label="Cerrar">✕</button>
+            <img id="modalImage" src="" alt="" />
+            <h3 id="modalTitle"></h3>
+            <div id="modalDetails"></div>
+            <a id="downloadBtn" class="btn-download" href="#">Descargar</a>
           </div>
-          <button class="carousel-btn next" aria-label="Siguiente">›</button>
         </div>
-        <div class="carousel-actions">
-          <!-- Se elimina el botón descargar todos; la descarga es individual -->
-        </div>
+
       </section>
 
     </main>
@@ -152,7 +148,8 @@
     <p>Estudios involucrados: ArcOrizonStudio y CrabCodeStudio</p>
   </footer>
 
-  <script src="js/app.js"></script>
+  <!-- Usar script.js desde la raíz (ya está en el repo) -->
+  <script src="script.js"></script>
   <script>
     // Maneja los botones con data-link (abre en nueva pestaña)
     document.addEventListener('click', function (e) {
