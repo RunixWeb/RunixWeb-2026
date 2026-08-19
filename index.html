@@ -26,7 +26,7 @@
          Para añadir más módulos duplica el <article class="side-module"> y cambia img src, id y textos. -->
     <aside id="sidebar" aria-label="Módulos laterales">
       <div class="side-modules">
-        <article class="side-module" id="module-arcorizon" tabindex="0" aria-labelledby="m-arc-title">
+        <article class="side-module blue" id="module-arcorizon" tabindex="0" aria-labelledby="m-arc-title">
           <img src="icons/arcorizon.svg" alt="ArcOrizonStudio icon" class="side-icon" />
           <div class="side-text">
             <h4 id="m-arc-title">ArcOrizonStudio</h4>
@@ -34,10 +34,10 @@
           </div>
         </article>
 
-        <article class="side-module" id="module-codeink" tabindex="0" aria-labelledby="m-code-title">
-          <img src="icons/codeink.svg" alt="CodeInkStudio icon" class="side-icon" />
+        <article class="side-module yellow" id="module-crabinc" tabindex="0" aria-labelledby="m-code-title">
+          <img src="icons/crabinc.svg" alt="CrabIncStudio icon" class="side-icon" />
           <div class="side-text">
-            <h4 id="m-code-title">CodeInkStudio</h4>
+            <h4 id="m-code-title">CrabIncStudio</h4>
             <p class="side-desc">Estudio personal de Runix, centrado en herramientas, juegos y prototipos.</p>
           </div>
         </article>
@@ -50,15 +50,20 @@
     <main>
       <!-- HERO / TITULO -->
       <section id="hero">
-        <h1>RunixTC</h1>
-        <p class="subtitle">Creador de contenido, animador, editor, desarrollador, escritor y músico.</p>
-        <div class="links">
-          <!-- Botones de ejemplo: reemplaza data-link con tu URL -->
-          <button class="external-link" data-link="https://www.youtube.com/@Runix_el_raro">YouTube (Canal principal)</button>
-          <button class="external-link" data-link="https://www.youtube.com/@MusicOperationProblem">Youtube (Canal de música)</button>
-          <button class="external-link" data-link="https://github.com/REEMPLAZAME">GitHub</button>
-          <button class="external-link" data-link="https://runix-yt.itch.io/">Itch.io</button>
-          <button class="external-link" data-link="https://getinkspired.com/es/u/runix_el_raro/">Inkspired</button>
+        <div class="hero-inner">
+          <img src="icons/runix.svg" alt="RunixTC icon" class="hero-icon" />
+          <div>
+            <h1>RunixTC</h1>
+            <p class="subtitle">Creador de contenido, animador, editor, desarrollador, escritor y músico.</p>
+            <div class="links">
+              <!-- Botones de ejemplo: reemplaza data-link con tu URL -->
+              <button class="external-link" data-link="https://www.youtube.com/@Runix_el_raro">YouTube (Canal principal)</button>
+              <button class="external-link" data-link="https://www.youtube.com/@MusicOperationProblem">Youtube (Canal de música)</button>
+              <button class="external-link" data-link="https://github.com/REEMPLAZAME">GitHub</button>
+              <button class="external-link" data-link="https://runix-yt.itch.io/">Itch.io</button>
+              <button class="external-link" data-link="https://getinkspired.com/es/u/runix_el_raro/">Inkspired</button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -96,6 +101,24 @@
         </ul>
       </section>
 
+      <!-- WALLPAPERS / CARRUSEL -->
+      <section id="wallpapers">
+        <h2>Wallpapers</h2>
+        <p class="subtitle">Galería de fondos. Usa las flechas o deja que se desplace automáticamente.</p>
+        <div class="carousel" aria-roledescription="carousel">
+          <button class="carousel-btn prev" aria-label="Anterior">‹</button>
+          <div class="carousel-track">
+            <div class="slide" data-src="wallpapers/wall1.svg"><img src="wallpapers/wall1.svg" alt="Wallpaper 1"></div>
+            <div class="slide" data-src="wallpapers/wall2.svg"><img src="wallpapers/wall2.svg" alt="Wallpaper 2"></div>
+            <div class="slide" data-src="wallpapers/wall3.svg"><img src="wallpapers/wall3.svg" alt="Wallpaper 3"></div>
+          </div>
+          <button class="carousel-btn next" aria-label="Siguiente">›</button>
+        </div>
+        <div class="carousel-actions">
+          <button id="download-all" class="download-btn">Descargar todos los wallpapers</button>
+        </div>
+      </section>
+
     </main>
 
   </div> <!-- .container -->
@@ -103,7 +126,7 @@
   <footer>
     <p>© RunixTC, sitio creado con el unico propósito de ser algo más que una web.</p>
     <p>Colaborando con LuPyther, Fabian y Vaisitron</p>
-    <p>Estudios involucrados: ArcOrizonStudio y CodeInkStudio</p>
+    <p>Estudios involucrados: ArcOrizonStudio y CrabIncStudio</p>
   </footer>
 
   <script src="js/app.js"></script>
